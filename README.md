@@ -11,7 +11,7 @@ A **web-based app** that runs in the browser built with Cursor AI. Organize your
 - **Schedule** — Add, edit, and filter events by type (game, practice, tournament). View date, time, location, opponent (for games), and notes.
 - **About the Team** — Roster of coaches (name, role, contact) and players (number, position, grade, parent contact).
 - **Messages** — Coaches can send messages to all parents/players or to individual players. Message history is stored locally.
-- **Coaches can manage multiple teams
+- Coaches can manage multiple teams
 
 ## Run locally
 
