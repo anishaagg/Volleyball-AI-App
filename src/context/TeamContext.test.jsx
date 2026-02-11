@@ -79,7 +79,7 @@ describe('TeamContext reducer', () => {
 
   it('TEAM_ADD adds a new team and switches to it', () => {
     const next = reducer(initialState, { type: 'TEAM_ADD', payload: { name: 'JV' } })
-    expect(next.teams).toHaveLength(2)
+    expect(next.teams).toHaveLength(3)
     expect(next.currentTeamId).not.toBe('t1')
     const newTeam = next.teams.find((t) => t.id === next.currentTeamId)
     expect(newTeam.name).toBe('JV')

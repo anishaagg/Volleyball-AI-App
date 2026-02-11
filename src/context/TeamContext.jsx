@@ -4,7 +4,7 @@ const STORAGE_KEY = 'setly-app'
 
 const defaultRoster = {
   teamPhotoUrl: '',
-  clubName: '',
+  clubName: 'Aspire Volleyball Club',
   aboutClub: '',
   coaches: [
     { id: 'c1', name: 'Sarah Chen', role: 'Head Coach', email: 'sarah.chen@team.com', phone: '(555) 101-2020', photoUrl: '', description: '' },
@@ -34,18 +34,46 @@ const defaultMessages = [
   { id: 'm2', from: 'c1', fromName: 'Coach Sarah', to: 'p1', toName: 'Emma Johnson', subject: 'Setter clinic this Saturday', body: 'Emma — there\'s an optional setter clinic Saturday 9–11am at the rec center. Let me know if you can make it!', sentAt: '2026-02-08T09:30:00', readBy: [] },
 ]
 
-function createDefaultTeam(id, name) {
+const messages172 = [
+  { id: 'm3', from: 'c1', fromName: 'Coach Sarah', to: 'all', toName: 'All Parents & Players', subject: '17.2 — Tournament prep this week', body: 'We have a busy week ahead. Make sure you\'ve reviewed the scouting notes. Let me or Coach Jessica know if you have any questions.', sentAt: '2026-02-09T10:00:00', readBy: [] },
+  { id: 'm4', from: 'c1', fromName: 'Coach Sarah', to: 'p7', toName: 'Riley Adams', subject: 'Captains meeting Friday', body: 'Riley — quick captains meeting Friday before practice. Can you make it?', sentAt: '2026-02-08T15:00:00', readBy: [] },
+]
+
+const roster172 = {
+  teamPhotoUrl: '',
+  clubName: 'Aspire Volleyball Club',
+  aboutClub: '',
+  coaches: [
+    { id: 'c1', name: 'Sarah Chen', role: 'Head Coach', email: 'sarah.chen@team.com', phone: '(555) 101-2020', photoUrl: '', description: '' },
+    { id: 'c3', name: 'Jessica Park', role: 'Assistant Coach', email: 'jessica.park@team.com', phone: '(555) 103-2022', photoUrl: '', description: '' },
+  ],
+  players: [
+    { id: 'p7', name: 'Riley Adams', number: 4, position: 'Setter', grade: '12', email: 'riley.adams@email.com', parentContact: 'adams@email.com', photoUrl: '', guardians: [] },
+    { id: 'p8', name: 'Quinn Martinez', number: 8, position: 'Outside Hitter', grade: '12', email: 'quinn.martinez@email.com', parentContact: 'qmartinez@email.com', photoUrl: '', guardians: [] },
+    { id: 'p9', name: 'Sam Nguyen', number: 2, position: 'Libero', grade: '11', email: 'sam.nguyen@email.com', parentContact: 'snguyen@email.com', photoUrl: '', guardians: [] },
+    { id: 'p10', name: 'Jordan Foster', number: 10, position: 'Middle Blocker', grade: '12', email: 'jordan.foster@email.com', parentContact: 'jfoster@email.com', photoUrl: '', guardians: [] },
+    { id: 'p11', name: 'Alex Chen', number: 6, position: 'Opposite', grade: '11', email: 'alex.chen@email.com', parentContact: 'achen@email.com', photoUrl: '', guardians: [] },
+    { id: 'p12', name: 'Drew Thompson', number: 11, position: 'Outside Hitter', grade: '12', email: 'drew.thompson@email.com', parentContact: 'dthompson@email.com', photoUrl: '', guardians: [] },
+  ],
+}
+
+function createDefaultTeam(id, name, rosterOverride, messagesOverride) {
+  const roster = rosterOverride ?? JSON.parse(JSON.stringify(defaultRoster))
+  const messages = messagesOverride ?? JSON.parse(JSON.stringify(defaultMessages))
   return {
     id,
     name: name || 'New Team',
-    roster: JSON.parse(JSON.stringify(defaultRoster)),
+    roster: JSON.parse(JSON.stringify(roster)),
     schedule: JSON.parse(JSON.stringify(defaultSchedule)),
-    messages: JSON.parse(JSON.stringify(defaultMessages)),
+    messages: JSON.parse(JSON.stringify(messages)),
   }
 }
 
 const DEFAULT_TEAM_ID = 't1'
-const defaultTeams = [createDefaultTeam(DEFAULT_TEAM_ID, 'Varsity')]
+const defaultTeams = [
+  createDefaultTeam('t1', '14.2'),
+  createDefaultTeam('t2', '17.2', roster172, messages172),
+]
 
 export const initialState = {
   teams: defaultTeams,
