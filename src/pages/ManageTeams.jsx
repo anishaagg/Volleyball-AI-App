@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import { useTeam } from '../context/TeamContext'
 import styles from './ManageTeams.module.css'
@@ -6,6 +7,7 @@ import styles from './ManageTeams.module.css'
 export default function ManageTeams() {
   const { isDirector } = useAuth()
   const { teams, currentTeamId, dispatch } = useTeam()
+  const navigate = useNavigate()
   const [editingId, setEditingId] = useState(null)
   const [editName, setEditName] = useState('')
   const [newTeamName, setNewTeamName] = useState('')
@@ -54,12 +56,28 @@ export default function ManageTeams() {
     dispatch({ type: 'TEAM_SWITCH', payload: id })
   }
 
+  const goToRoster = (teamId) => {
+    dispatch({ type: 'TEAM_SWITCH', payload: teamId })
+    navigate('/about')
+  }
+
+  const goToSchedule = (teamId) => {
+    dispatch({ type: 'TEAM_SWITCH', payload: teamId })
+    navigate('/schedule')
+  }
+
   return (
     <div className={styles.page}>
-      <h1 className={styles.title}>Manage teams</h1>
+      <h1 className={styles.title}>Director Dashboard</h1>
       <p className={styles.subtitle}>
-        Add, rename, or remove teams for your club/school. Use the team switcher in the nav to view a team.
+        View and manage all club teams. Edit rosters and schedules for any team.
       </p>
+
+      <div className={styles.clubwideRow}>
+        <Link to="/messages" className={styles.clubwideBtn}>
+          Send club-wide message
+        </Link>
+      </div>
 
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
@@ -105,6 +123,12 @@ export default function ManageTeams() {
                     </span>
                   </div>
                   <div className={styles.teamActions}>
+                    <button type="button" onClick={() => goToRoster(team.id)} className={styles.actionBtn} title="Edit roster">
+                      Roster
+                    </button>
+                    <button type="button" onClick={() => goToSchedule(team.id)} className={styles.actionBtn} title="Manage schedule">
+                      Schedule
+                    </button>
                     {team.id !== currentTeamId && (
                       <button type="button" onClick={() => switchTo(team.id)} className={styles.switchBtn}>
                         Switch to this team

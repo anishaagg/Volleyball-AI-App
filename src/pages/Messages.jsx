@@ -17,9 +17,11 @@ const COACHES_RECIPIENT = { id: 'coaches', name: 'Coaches' }
 const FOLDER_INBOX = 'inbox'
 const FOLDER_SENT = 'sent'
 
+const CLUBWIDE_RECIPIENT = { id: 'clubwide', name: 'Entire club (all teams)' }
+
 export default function Messages() {
   const { messages, roster, dispatch } = useTeam()
-  const { user, canManageTeam, isParent } = useAuth()
+  const { user, canManageTeam, isParent, isDirector } = useAuth()
   const [folder, setFolder] = useState(FOLDER_INBOX)
   const [selectedId, setSelectedId] = useState(null)
   const [composeOpen, setComposeOpen] = useState(false)
@@ -30,6 +32,7 @@ export default function Messages() {
   const sortedFolderMessages = [...folderMessages].sort((a, b) => new Date(b.sentAt) - new Date(a.sentAt))
 
   const coachRecipients = [
+    ...(isDirector ? [CLUBWIDE_RECIPIENT] : []),
     { id: 'all', name: 'All Parents & Players' },
     ...roster.players.map((p) => ({ id: p.id, name: `${p.name} (Player)` })),
   ]
@@ -72,11 +75,17 @@ export default function Messages() {
 
   const handleSend = (to, toName, subject, body) => {
     const payload = { to, toName, subject, body }
-    if (!canManageTeam && user) {
+    if (user) {
       payload.from = user.id
       payload.fromName = isParent ? `Guardian of ${user.name}` : user.name
     }
-    dispatch({ type: 'MESSAGE_SEND', payload })
+    if (isDirector && to === 'clubwide') {
+      payload.to = 'all'
+      payload.toName = 'All Parents & Players (Entire Club)'
+      dispatch({ type: 'MESSAGE_SEND_CLUBWIDE', payload })
+    } else {
+      dispatch({ type: 'MESSAGE_SEND', payload })
+    }
     setComposeOpen(false)
   }
 

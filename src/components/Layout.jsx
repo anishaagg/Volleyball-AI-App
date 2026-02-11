@@ -10,7 +10,7 @@ export default function Layout() {
   const unreadCount = getUnreadCount(messages, user)
 
   const roleLabel = isDirector ? 'Director' : isCoach ? 'Coach' : isParent ? 'Parent/Guardian' : 'Player'
-  const displayName = isDirector ? 'Director' : isParent ? `Guardian of ${user?.name}` : user?.name
+  const displayName = isDirector ? (user?.name || 'Director') : isParent ? `Guardian of ${user?.name}` : user?.name
 
   return (
     <div className={styles.wrapper}>
@@ -32,8 +32,8 @@ export default function Layout() {
               ))}
             </select>
           )}
-          <NavLink to="/" end className={({ isActive }) => (isActive ? styles.navActive : '')}>
-            Home
+          <NavLink to={isDirector ? '/teams' : '/'} end className={({ isActive }) => (isActive ? styles.navActive : '')}>
+            {isDirector ? 'Manage Teams' : 'Home'}
           </NavLink>
           <NavLink to="/schedule" className={({ isActive }) => (isActive ? styles.navActive : '')}>
             Schedule
@@ -47,11 +47,6 @@ export default function Layout() {
               {unreadCount > 0 && <span className={styles.messageBadge}>{unreadCount > 99 ? '99+' : unreadCount}</span>}
             </span>
           </NavLink>
-          {isDirector && (
-            <NavLink to="/teams" className={({ isActive }) => (isActive ? styles.navActive : '')}>
-              Manage teams
-            </NavLink>
-          )}
         </nav>
         <div className={styles.userBar}>
           <span className={styles.userName} title={roleLabel}>

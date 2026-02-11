@@ -69,6 +69,11 @@ function createDefaultTeam(id, name, rosterOverride, messagesOverride) {
   }
 }
 
+/** Director test user — admin for the entire club and all teams. Login: director@setly.app / director */
+const defaultDirectors = [
+  { id: 'd1', name: 'Club Director', email: 'director@setly.app', role: 'director', phone: '', description: 'Admin for the entire club and all teams.' },
+]
+
 const DEFAULT_TEAM_ID = 't1'
 const defaultTeams = [
   createDefaultTeam('t1', '14.2'),
@@ -78,6 +83,7 @@ const defaultTeams = [
 export const initialState = {
   teams: defaultTeams,
   currentTeamId: DEFAULT_TEAM_ID,
+  directors: defaultDirectors,
 }
 
 function getCurrentTeam(state) {
@@ -121,7 +127,10 @@ function saveState(state) {
 /** Migrate old single-team state to multi-team shape */
 function migrateState(saved) {
   if (saved.teams && Array.isArray(saved.teams) && saved.currentTeamId) {
-    return saved
+    return {
+      ...saved,
+      directors: Array.isArray(saved.directors) && saved.directors.length > 0 ? saved.directors : defaultDirectors,
+    }
   }
   if (saved.roster || saved.schedule || saved.messages) {
     return {
@@ -135,6 +144,7 @@ function migrateState(saved) {
         },
       ],
       currentTeamId: DEFAULT_TEAM_ID,
+      directors: defaultDirectors,
     }
   }
   return null
@@ -244,21 +254,39 @@ export function reducer(state, action) {
         ...team,
         schedule: team.schedule.filter((e) => e.id !== action.payload),
       }))
-    case 'MESSAGE_SEND':
+    case 'MESSAGE_SEND': {
+      const id = 'm' + Date.now()
+      const sentAt = new Date().toISOString()
+      const msg = {
+        ...action.payload,
+        id,
+        sentAt,
+        from: action.payload.from ?? 'c1',
+        fromName: action.payload.fromName ?? 'Coach Sarah',
+        readBy: [],
+      }
       return updateCurrentTeam(state, (team) => ({
         ...team,
-        messages: [
-          ...team.messages,
-          {
-            ...action.payload,
-            id: 'm' + Date.now(),
-            sentAt: new Date().toISOString(),
-            from: action.payload.from ?? 'c1',
-            fromName: action.payload.fromName ?? 'Coach Sarah',
-            readBy: [],
-          },
-        ],
+        messages: [...team.messages, msg],
       }))
+    }
+    case 'MESSAGE_SEND_CLUBWIDE': {
+      const id = 'm' + Date.now()
+      const sentAt = new Date().toISOString()
+      const msg = {
+        ...action.payload,
+        id,
+        sentAt,
+        from: action.payload.from ?? 'director',
+        fromName: action.payload.fromName ?? 'Club Director',
+        readBy: [],
+      }
+      const nextTeams = state.teams.map((team) => ({
+        ...team,
+        messages: [...team.messages, msg],
+      }))
+      return { ...state, teams: nextTeams }
+    }
     case 'MESSAGE_MARK_READ':
       return updateCurrentTeam(state, (team) => ({
         ...team,

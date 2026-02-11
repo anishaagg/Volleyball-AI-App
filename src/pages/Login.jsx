@@ -33,13 +33,13 @@ export default function Login() {
     setLoading(true)
     try {
       const result = await verifyCredentials(trimmedEmail, password)
-      if (result) {
+        if (result) {
         if (result.role === 'parent') {
           login({ id: result.id, name: result.name, role: 'parent', playerId: result.playerId })
         } else {
           login({ id: result.id, name: result.name, role: result.role })
         }
-        navigate('/', { replace: true })
+        navigate(result.role === 'director' ? '/teams' : '/', { replace: true })
       } else {
         setError('Invalid email or password.')
       }

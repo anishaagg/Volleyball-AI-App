@@ -98,7 +98,7 @@ export async function verifyCredentials(email, password) {
       const director = JSON.parse(raw)
       const hash = await hashPassword(password)
       if (hash === director.passwordHash) {
-        return { role: 'director', id: 'director', name: 'Director' }
+        return { role: 'director', id: 'director', name: 'Club Director' }
       }
     } catch (_) {}
     return null
