@@ -1,6 +1,6 @@
 # Setly
 
-A **web-based app** that runs in the browser. Organize your volleyball team: **schedule** (games, practices, tournaments), **roster** (players and coaches), and **messaging** for coaches to communicate with parents and players.
+A **web-based app** that runs in the browser built with Cursor AI. Organize your volleyball team: **schedule** (games, practices, tournaments), **roster** (players and coaches), and **messaging** for coaches to communicate with parents and players.
 
 - Open it in any browser (Chrome, Safari, Firefox, Edge) on desktop or phone.
 - Optional: **Install as app** — use “Add to Home Screen” on mobile or “Install” in the browser address bar for an app-like experience.
@@ -11,6 +11,7 @@ A **web-based app** that runs in the browser. Organize your volleyball team: **s
 - **Schedule** — Add, edit, and filter events by type (game, practice, tournament). View date, time, location, opponent (for games), and notes.
 - **About the Team** — Roster of coaches (name, role, contact) and players (number, position, grade, parent contact).
 - **Messages** — Coaches can send messages to all parents/players or to individual players. Message history is stored locally.
+- **Coaches can manage multiple teams
 
 ## Run locally
 
