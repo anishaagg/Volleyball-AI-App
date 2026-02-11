@@ -1,0 +1,18 @@
+{
+  "name": "Setly",
+  "short_name": "Setly",
+  "description": "Schedule, roster, and messaging for your volleyball team.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f1419",
+  "theme_color": "#e85d04",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

@@ -1,0 +1,199 @@
+.page {
+  animation: fadeIn 0.25s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.subtitle {
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.sectionHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.sectionTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.addRow {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.input {
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 0.95rem;
+  min-width: 160px;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.addBtn {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.addBtn:hover {
+  filter: brightness(1.1);
+}
+
+.teamList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.teamCard {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 0.75rem;
+  background: var(--bg);
+}
+
+.teamCard[data-active="true"] {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.teamCard:last-child {
+  margin-bottom: 0;
+}
+
+.teamInfo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.teamName {
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+.currentBadge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #fff;
+}
+
+.teamMeta {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.teamActions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.switchBtn {
+  padding: 0.4rem 0.75rem;
+  font-size: 0.85rem;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 500;
+}
+
+.switchBtn:hover {
+  filter: brightness(1.1);
+}
+
+.actionBtn {
+  padding: 0.4rem 0.75rem;
+  font-size: 0.85rem;
+  border-radius: 8px;
+  background: var(--surface-hover);
+  color: var(--text);
+}
+
+.actionBtn:hover {
+  background: var(--border);
+}
+
+.removeBtn {
+  padding: 0.4rem 0.75rem;
+  font-size: 0.85rem;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--danger, #c53030);
+}
+
+.removeBtn:hover {
+  background: rgba(197, 48, 48, 0.1);
+}
+
+.editRow {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  width: 100%;
+}
+
+.editRow .input {
+  flex: 1;
+  min-width: 0;
+}
+
+.saveBtn {
+  padding: 0.4rem 0.75rem;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 500;
+}
+
+.cancelBtn {
+  padding: 0.4rem 0.75rem;
+  border-radius: 8px;
+  background: var(--surface-hover);
+  color: var(--text);
+}

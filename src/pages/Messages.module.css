@@ -1,0 +1,372 @@
+.page {
+  animation: fadeIn 0.25s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.header {
+  margin-bottom: 1.25rem;
+}
+
+.title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.subtitle {
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.composeBtn {
+  background: var(--accent);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.composeBtn:hover {
+  filter: brightness(1.1);
+}
+
+/* Inbox / Sent folders */
+.folders {
+  display: flex;
+  gap: 0;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.folderBtn, .folderActive {
+  padding: 0.6rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  background: transparent;
+  color: var(--text-muted);
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.folderBtn:hover {
+  color: var(--text);
+}
+
+.folderActive {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.folderBadge {
+  min-width: 1.25rem;
+  height: 1.25rem;
+  padding: 0 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.25rem;
+  text-align: center;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 10px;
+}
+
+/* Notification center (unread) */
+.notificationCenter {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.notificationCenterHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.notificationCenterTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.markAllReadBtn {
+  font-size: 0.85rem;
+  color: var(--accent);
+  padding: 0.25rem 0.5rem;
+}
+
+.markAllReadBtn:hover {
+  text-decoration: underline;
+}
+
+.unreadList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.unreadItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.unreadItem:last-child {
+  border-bottom: none;
+}
+
+.unreadItemBtn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+}
+
+.unreadItemBtn:hover {
+  color: var(--accent);
+}
+
+.unreadFrom {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.unreadSubject {
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.unreadDate {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.markReadBtn {
+  flex-shrink: 0;
+  font-size: 0.8rem;
+  color: var(--accent);
+  padding: 0.25rem 0.5rem;
+}
+
+.markReadBtn:hover {
+  text-decoration: underline;
+}
+
+.threadUnread {
+  font-weight: 500;
+}
+
+.unreadDot {
+  position: absolute;
+  left: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.thread {
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 0;
+  min-height: 400px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  overflow: hidden;
+  transition: grid-template-columns 0.2s ease;
+}
+
+.layoutMessageOpen {
+  grid-template-columns: 260px 1fr;
+}
+
+.list {
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  background: var(--surface);
+}
+
+.thread, .threadActive {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+  padding: 1rem 1.25rem;
+  text-align: left;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.thread:hover {
+  background: var(--surface-hover);
+}
+
+.threadActive {
+  background: var(--accent-soft);
+  border-left: 3px solid var(--accent);
+}
+
+.threadFrom {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.threadSubject {
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.threadDate {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.empty {
+  padding: 2rem;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.detail {
+  padding: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.detailToolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface-hover);
+}
+
+.closeMessageBtn {
+  font-size: 0.9rem;
+  color: var(--accent);
+  padding: 0.35rem 0.5rem;
+}
+
+.closeMessageBtn:hover {
+  text-decoration: underline;
+}
+
+.detailActions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.markUnreadBtn {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  padding: 0.35rem 0.6rem;
+  border-radius: 6px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.markUnreadBtn:hover {
+  color: var(--text);
+}
+
+.deleteMessageBtn {
+  font-size: 0.85rem;
+  color: #f85149;
+  padding: 0.35rem 0.6rem;
+  border-radius: 6px;
+  background: transparent;
+  border: 1px solid rgba(248, 81, 73, 0.4);
+}
+
+.deleteMessageBtn:hover {
+  background: rgba(248, 81, 73, 0.1);
+}
+
+.detailHeader {
+  margin-bottom: 0;
+  padding: 1.25rem 1.25rem 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.detailSubject {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.detailMeta {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.detailBody {
+  flex: 1;
+  white-space: pre-wrap;
+  line-height: 1.6;
+  font-size: 0.95rem;
+  padding: 1.25rem;
+}
+
+.emptyDetail {
+  color: var(--text-muted);
+  padding: 2rem;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .list {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    max-height: 240px;
+  }
+}

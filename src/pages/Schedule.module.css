@@ -1,0 +1,209 @@
+.page {
+  animation: fadeIn 0.25s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.header {
+  margin-bottom: 1.25rem;
+}
+
+.title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.subtitle {
+  color: var(--text-muted);
+  margin-bottom: 0.25rem;
+}
+
+.coachNote {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 0;
+  padding: 0.5rem 0.75rem;
+  background: var(--accent-soft);
+  border-radius: 8px;
+  border-left: 3px solid var(--accent);
+  max-width: 480px;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.toolbarLeft {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.viewToggle {
+  display: flex;
+  gap: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.viewBtn, .viewActive {
+  padding: 0.4rem 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  background: var(--surface);
+  color: var(--text-muted);
+  border: none;
+}
+
+.viewBtn:hover {
+  color: var(--text);
+  background: var(--surface-hover);
+}
+
+.viewActive {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.filters {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.filterBtn, .filterActive {
+  padding: 0.4rem 0.75rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  background: var(--surface);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+}
+
+.filterBtn:hover {
+  color: var(--text);
+  background: var(--surface-hover);
+}
+
+.filterActive {
+  background: var(--accent-soft);
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.addBtn {
+  background: var(--accent);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.addBtn:hover {
+  filter: brightness(1.1);
+}
+
+.list {
+  list-style: none;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+  margin-bottom: 0.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.typeBadge {
+  flex-shrink: 0;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  background: var(--surface-hover);
+  color: var(--text-muted);
+}
+
+.typeBadge[data-type="game"] {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.typeBadge[data-type="tournament"] {
+  background: rgba(63, 185, 80, 0.15);
+  color: var(--success);
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+}
+
+.content h3 {
+  font-size: 1.05rem;
+  margin-bottom: 0.25rem;
+}
+
+.meta, .opponent, .notes {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 0.15rem;
+}
+
+.notes {
+  margin-top: 0.35rem;
+  font-style: italic;
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.actionBtn, .actionBtnDanger {
+  padding: 0.35rem 0.65rem;
+  font-size: 0.85rem;
+  border-radius: 6px;
+  background: var(--surface-hover);
+  color: var(--text);
+}
+
+.actionBtn:hover {
+  background: var(--border);
+}
+
+.actionBtnDanger {
+  color: #f85149;
+  background: transparent;
+}
+
+.actionBtnDanger:hover {
+  background: rgba(248, 81, 73, 0.15);
+}
+
+.empty {
+  color: var(--text-muted);
+  padding: 2rem;
+  text-align: center;
+  background: var(--surface);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+}
